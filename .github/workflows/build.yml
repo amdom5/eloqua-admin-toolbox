@@ -41,7 +41,8 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Check build output (All platforms)
+      - name: Check build output (Unix)
+        if: matrix.platform != 'windows'
         run: |
           echo "Checking dist directory structure:"
           find dist -type f -name "*.js" || echo "No JS files found in dist"
@@ -58,10 +59,10 @@ jobs:
       - name: Check build output (Windows)
         if: matrix.platform == 'windows'
         run: |
-          echo "Checking dist directory structure:"
-          dir dist /s
-          echo "Checking main.js exists:"
-          if exist "dist\main\main.js" (echo "main.js found") else (echo "main.js NOT found")
+          Write-Host "Checking dist directory structure:"
+          Get-ChildItem -Path "dist" -Recurse -Name "*.js"
+          Write-Host "Checking main.js exists:"
+          if (Test-Path "dist\main\main.js") { Write-Host "main.js found" } else { Write-Host "main.js NOT found" }
 
       - name: Build for Windows
         if: matrix.platform == 'windows'
