@@ -1,0 +1,185 @@
+:root {
+  /* --- 1. Core Brand Colors (Professional Identity) --- */
+  /* Sophisticated red-based palette with refined neutrals */
+  --brand-primary:      #871c1c; /* Vibrant Red: For primary branding, main CTAs */
+  --brand-secondary:    #a91b1b; /* Medium Red: For secondary branding, hover states */
+  --brand-accent:       #dc7633; /* Warm Orange: For special highlights and accents */
+
+  /* --- 2. UI & Layout Neutrals (Clean Foundation) --- */
+  /* Pure, clean backgrounds without color tinting */
+  --ui-bg-main:         #ffffff; /* Pure White: Primary background for all content areas */
+  --ui-bg-secondary:    #f8fafc; /* Slate 50: For sidebars, card backgrounds, secondary panels */
+  --ui-bg-subtle:       #f1f5f9; /* Slate 100: For hover states, subtle sections */
+  --ui-bg-elevated:     #ffffff; /* White: For modals, dropdowns, elevated surfaces */
+  --ui-border-primary:  #e2e8f0; /* Slate 200: Default border and divider color */
+  --ui-border-secondary:#cbd5e1; /* Slate 300: Stronger borders for emphasis */
+
+  /* --- 3. Text & Typography Colors (Enhanced Readability) --- */
+  --text-primary:       #0f172a; /* Slate 900: Primary body text, headings */
+  --text-secondary:     #64748b; /* Slate 500: Secondary text, captions, metadata */
+  --text-tertiary:      #94a3b8; /* Slate 400: Placeholder text, disabled text */
+  --text-on-dark-bg:    #f8fafc; /* Slate 50: Text on dark backgrounds */
+  --text-link:          #3b82f6; /* Blue 500: Hyperlinks and interactive text */
+
+  /* --- 4. System & State Colors (Clear Feedback) --- */
+  --state-error:        #dc2626; /* Red 600: Error messages, validation failures */
+  --state-error-bg:     #fef2f2; /* Red 50: Error background */
+  --state-warning:      #d97706; /* Amber 600: Warnings, caution states */
+  --state-warning-bg:   #fffbeb; /* Amber 50: Warning background */
+  --state-success:      #059669; /* Emerald 600: Success messages, completed states */
+  --state-success-bg:   #ecfdf5; /* Emerald 50: Success background */
+  --state-info:         #0284c7; /* Sky 600: Informational messages */
+  --state-info-bg:      #f0f9ff; /* Sky 50: Info background */
+  --state-disabled-bg:  #f1f5f9; /* Slate 100: Disabled button backgrounds */
+  --state-disabled-text:#94a3b8; /* Slate 400: Disabled text */
+
+  /* --- 5. Interactive & Accent Colors (Professional Actions) --- */
+  --interactive-primary:   #871c1c; /* Vibrant Red: Primary buttons, main actions */
+  --interactive-primary-hover: #661515; /* Darker Red: Primary button hover */
+  --interactive-secondary: #475569; /* Slate 600: Secondary buttons */
+  --interactive-secondary-hover: #334155; /* Slate 700: Secondary button hover */
+  
+  /* Supporting accent colors for variety */
+  --accent-purple:      #7c3aed; /* Violet 600: For special features */
+  --accent-teal:        #0d9488; /* Teal 600: For categories, tags */
+  --accent-orange:      #ea580c; /* Orange 600: For highlights */
+  --accent-gray:        #6b7280; /* Gray 500: For neutral accents */
+  
+  /* --- Semantic Color Mapping (Clean Aliases) --- */
+  --primary-color: var(--brand-primary);
+  --primary-hover: var(--interactive-primary-hover);
+  --secondary-color: var(--interactive-secondary);
+  --secondary-hover: var(--interactive-secondary-hover);
+  --background-color: var(--ui-bg-main);
+  --surface-color: var(--ui-bg-secondary);
+  --border-color: var(--ui-border-primary);
+  --error-color: var(--state-error);
+  --success-color: var(--state-success);
+  --warning-color: var(--state-warning);
+  --info-color: var(--state-info);
+  
+  /* Additional semantic colors for enhanced UX */
+  --focus-color: var(--brand-accent); /* Warm orange for focus states */
+  --hover-bg: var(--ui-bg-subtle);
+  --loading-color: var(--text-secondary);
+  --overlay-bg: rgba(135, 28, 28, 0.5); /* Vibrant red with opacity */
+  
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  --border-radius: 4px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  --shadow-md: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --shadow-lg: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-weight: 600; /* Semi Bold weight for better readability */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  font-weight: 700; /* Bold for buttons */
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 36px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-on-dark-bg);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--secondary-color);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--hover-bg);
+  border-color: var(--secondary-color);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-size: 14px;
+  font-weight: 700; /* Bold for labels */
+  color: var(--text-primary);
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--focus-color);
+  box-shadow: 0 0 0 3px rgba(220, 118, 51, 0.15); /* Orange focus ring */
+}
+
+.form-input:invalid {
+  border-color: var(--error-color);
+}
+
+.card {
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-lg);
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 12px;
+  margin-top: var(--spacing-xs);
+}

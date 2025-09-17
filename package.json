@@ -1,0 +1,68 @@
+{
+  "name": "eloqua-admin-toolbox",
+  "version": "1.0.0",
+  "description": "Desktop application for advanced Eloqua administration tasks",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:main\" \"npm run dev:renderer\"",
+    "dev:main": "tsc -p tsconfig.main.json && electron dist/main/main.js --inspect=9229 --no-sandbox",
+    "dev:renderer": "vite",
+    "build": "npm run build:main && npm run build:renderer",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:renderer": "vite build",
+    "dist": "npm run build && electron-builder",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "dist:win": "npm run build && electron-builder --win",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "keywords": [
+    "eloqua",
+    "marketing",
+    "automation",
+    "api",
+    "admin"
+  ],
+  "author": "Andrew",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "concurrently": "^8.0.0",
+    "electron": "^25.0.0",
+    "electron-builder": "^24.0.0",
+    "eslint": "^8.0.0",
+    "rollup-plugin-analyzer": "^4.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^4.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.10.0",
+    "exceljs": "^4.4.0",
+    "keytar": "^7.9.0",
+    "lucide-react": "^0.525.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.0"
+  },
+  "build": {
+    "appId": "com.andrew.eloqua-admin-toolbox",
+    "productName": "Eloqua Admin Toolbox",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}

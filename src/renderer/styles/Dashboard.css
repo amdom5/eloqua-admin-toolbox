@@ -1,0 +1,164 @@
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.dashboard-logo {
+  margin-bottom: var(--spacing-lg);
+}
+
+.dashboard-logo-image {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.dashboard-header h1 {
+  color: var(--text-primary);
+  font-size: 28px;
+  font-weight: 800; /* Extra Bold for main heading */
+  margin-bottom: var(--spacing-sm);
+}
+
+.dashboard-header p {
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.tool-card {
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-lg);
+  transition: box-shadow 0.2s ease;
+}
+
+.tool-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-header {
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: var(--spacing-md);
+  gap: 0 !important;
+  height: auto !important;
+  min-height: 32px;
+}
+
+.card-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+  flex-shrink: 0 !important;
+  margin-right: 16px !important;
+  color: var(--primary-color);
+}
+
+.card-title {
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 800; /* Extra Bold for tool titles */
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 32px !important; /* Match icon height exactly */
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  flex: 1;
+}
+
+.tool-description {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 16px 0 !important; /* Reduced gap to 16px */
+  padding: 0 !important;
+}
+
+.tool-features {
+  list-style: none;
+  margin: 0 0 var(--spacing-lg) 0; /* Remove default margin, set explicit bottom */
+  padding: 0; /* Remove any default padding */
+}
+
+.tool-features li {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-bottom: var(--spacing-xs);
+  padding-left: var(--spacing-md);
+  position: relative;
+}
+
+.tool-features li::before {
+  content: '•';
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+}
+
+.tool-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.dashboard-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.info-card {
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-lg);
+}
+
+.info-card h3 {
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 800; /* Extra Bold for card headings */
+  margin-bottom: var(--spacing-md);
+}
+
+.info-card p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: var(--spacing-md);
+}
+
+.info-card ul {
+  list-style: none;
+}
+
+.info-card li {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-bottom: var(--spacing-xs);
+  padding-left: var(--spacing-md);
+  position: relative;
+}
+
+.info-card li::before {
+  content: '✓';
+  color: var(--success-color);
+  position: absolute;
+  left: 0;
+}
