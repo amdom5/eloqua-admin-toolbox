@@ -45,9 +45,11 @@ jobs:
         if: matrix.platform != 'windows'
         run: |
           echo "Checking dist directory structure:"
-          find dist -type f -name "*.js" || echo "No JS files found in dist"
+          find dist -type f -name "*.js" | head -10 || echo "No JS files found in dist"
           echo "Checking main.js exists:"
-          if [ -f "dist/main/main.js" ]; then echo "main.js found"; else echo "main.js NOT found"; fi
+          if [ -f "dist/main/main.js" ]; then echo "main.js found at dist/main/main.js"; else echo "main.js NOT found"; fi
+          echo "File size of main.js:"
+          ls -la dist/main/main.js || echo "Cannot check file size"
 
       - name: Build for Linux
         if: matrix.platform == 'linux'
@@ -60,9 +62,15 @@ jobs:
         if: matrix.platform == 'windows'
         run: |
           Write-Host "Checking dist directory structure:"
-          Get-ChildItem -Path "dist" -Recurse -Name "*.js"
+          Get-ChildItem -Path "dist" -Recurse -Name "*.js" | Select-Object -First 10
           Write-Host "Checking main.js exists:"
-          if (Test-Path "dist\main\main.js") { Write-Host "main.js found" } else { Write-Host "main.js NOT found" }
+          if (Test-Path "dist\main\main.js") {
+            Write-Host "main.js found at dist\main\main.js"
+            Write-Host "File size:"
+            Get-Item "dist\main\main.js" | Select-Object Length
+          } else {
+            Write-Host "main.js NOT found"
+          }
 
       - name: Build for Windows
         if: matrix.platform == 'windows'

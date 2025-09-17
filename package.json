@@ -63,11 +63,7 @@
       "dist/**/*",
       "package.json"
     ],
-    "asar": true,
-    "asarUnpack": [
-      "**/node_modules/**/*.{node,dll}",
-      "dist/main/**/*"
-    ],
+    "asar": false,
     "mac": {
       "category": "public.app-category.productivity",
       "target": [
