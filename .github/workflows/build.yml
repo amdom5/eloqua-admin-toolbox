@@ -36,10 +36,17 @@ jobs:
         if: matrix.platform == 'linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libnss3-dev libatk-bridge2.0-dev libdrm2-dev libxcomposite1-dev libxdamage1-dev libxrandr2-dev libgbm1-dev libxss1-dev libasound2-dev
+          sudo apt-get install -y libnss3-dev libatk-bridge2.0-dev libdrm-dev libxcomposite-dev libxdamage-dev libxrandr-dev libgbm-dev libxss-dev libasound2-dev
 
       - name: Build application
         run: npm run build
+
+      - name: Check build output (All platforms)
+        run: |
+          echo "Checking dist directory structure:"
+          find dist -type f -name "*.js" || echo "No JS files found in dist"
+          echo "Checking main.js exists:"
+          if [ -f "dist/main/main.js" ]; then echo "main.js found"; else echo "main.js NOT found"; fi
 
       - name: Build for Linux
         if: matrix.platform == 'linux'
@@ -48,17 +55,27 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEBUG: electron-builder
 
+      - name: Check build output (Windows)
+        if: matrix.platform == 'windows'
+        run: |
+          echo "Checking dist directory structure:"
+          dir dist /s
+          echo "Checking main.js exists:"
+          if exist "dist\main\main.js" (echo "main.js found") else (echo "main.js NOT found")
+
       - name: Build for Windows
         if: matrix.platform == 'windows'
         run: npm run dist:win
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEBUG: electron-builder
 
       - name: Build for macOS
         if: matrix.platform == 'macos'
         run: npm run dist:mac
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEBUG: electron-builder
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
